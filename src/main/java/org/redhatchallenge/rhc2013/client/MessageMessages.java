@@ -47,14 +47,11 @@ public interface MessageMessages extends Messages {
     @Messages.DefaultMessage("Someone has already used this email/contact. Try another?")
     String emailTaken();
 
-    @Messages.DefaultMessage("<h1>Hi {0}, almost there!</h1><br/><h1>Go to {1} and confirm your registration.</h1><br/><h1>Tell your friends that you have registered for Red Hat Challenge 2013. Get them to join as well!</h1>")
+    @Messages.DefaultMessage("<p><FONT SIZE=5>Hi <B><I>{0}</I></B>! Almost there!</FONT></p>" +
+            "<br><FONT SIZE=4>Go to <B>{1}</B> and confirm your registration.</FONT></br>" +
+            "<p><FONT SIZE=4>Share with your friends that you have registered for Red Hat Challenge 2013.</FONT></p>" +
+            "<FONT SIZE=5 COLOR=\"red\"><B>Get them to join as well!</B></FONT>")
     String verifyMailMessage(String firstname, String email);
-
-//    @Messages.DefaultMessage("<p><FONT SIZE=5>Hi <B><I>{0}</I></B>! Almost there!</FONT></p>" +
-//            "<br><FONT SIZE=4>Go to <B>{1}</B> and confirm your registration.</FONT></br>" +
-//            "<p><FONT SIZE=4>Share with your friends that you have registered for Red Hat Challenge 2013.</FONT></p>" +
-//            "<FONT SIZE=5 COLOR=\"red\"><B>Get them to join as well!</B></FONT>")
-//    String verifyMailMessage(String firstname, String email);
 
     @Messages.DefaultMessage("Error with password reset token")
     String passwordTokenError();

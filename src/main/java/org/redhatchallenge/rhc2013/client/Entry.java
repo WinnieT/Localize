@@ -46,72 +46,72 @@ public class Entry implements EntryPoint {
             }
         });
 
-//        History.addValueChangeHandler(new ValueChangeHandler<String>() {
-//            @Override
-//            public void onValueChange(ValueChangeEvent<String> event) {
-//                String historyToken = event.getValue();
-//
-//                if (historyToken.isEmpty()) {
-//                    ContentContainer.INSTANCE.setContent(new IndexScreen());
-//                }
-//
-//                else if(historyToken.equalsIgnoreCase("registration")) {
-//                    ContentContainer.INSTANCE.setContent(new RegisterScreen());
-//                }
-//
-//                else if(historyToken.equalsIgnoreCase("login")) {
-//                    ContentContainer.INSTANCE.setContent(new LoginScreen());
-//                }
-//
-//                else if(historyToken.equalsIgnoreCase("tc")) {
-//                    ContentContainer.INSTANCE.setContent(new TCScreen());
-//                }
-//
-//                else if(historyToken.equalsIgnoreCase("profile")) {
-//                    ContentContainer.INSTANCE.setContent(new ProfileScreen());
-//                }
-//
-//                else if(historyToken.equalsIgnoreCase("details")) {
-//                    ContentContainer.INSTANCE.setContent(new ContestDetailsScreen());
-//                }
-//                else if(historyToken.equalsIgnoreCase("forget-password")){
-//                    ContentContainer.INSTANCE.setContent(new TriggerPasswordResetScreen());
-//                }
-//
-//
-//                else if(historyToken.substring(0, 10).equalsIgnoreCase("resetToken")) {
-//                    ContentContainer.INSTANCE.setContent(new ResetPasswordScreen(historyToken.substring(11)));
-//                }
-//
-//                else if(historyToken.substring(0, 12).equalsIgnoreCase("confirmToken")) {
-//                    authenticationService.setConfirmationStatus(historyToken.substring(13), new AsyncCallback<Boolean>() {
-//                        @Override
-//                        public void onFailure(Throwable caught) {
-//                            ContentContainer.INSTANCE.setContent(new MessageScreen("<h1>"+ messages.confirmationTokenError() +"</h1>"));
-//                        }
-//
-//                        @Override
-//                        public void onSuccess(Boolean result) {
-//                            if(result) {
-//                                ContentContainer.INSTANCE.setContent(new MessageScreen("<h1>"+ messages.confirmedAccount() +"</h1>"));
-//                            }
-//
-//                            else {
-//                                ContentContainer.INSTANCE.setContent(new MessageScreen("<h1>"+ messages.confirmationTokenError() +"</h1>"));
-//                            }
-//                        }
-//                    });
-//                }
-//
-//                else {
-//                    ContentContainer.INSTANCE.setContent(new IndexScreen());
-//                }
-//            }
-//        });
-//
-//        History.fireCurrentHistoryState();
+        History.addValueChangeHandler(new ValueChangeHandler<String>() {
+            @Override
+            public void onValueChange(ValueChangeEvent<String> event) {
+                String historyToken = event.getValue();
+
+                if (historyToken.isEmpty()) {
+                    ContentContainer.INSTANCE.setContent(new IndexScreen());
+                }
+
+                else if(historyToken.equalsIgnoreCase("registration")) {
+                    ContentContainer.INSTANCE.setContent(new RegisterScreen());
+                }
+
+                else if(historyToken.equalsIgnoreCase("login")) {
+                    ContentContainer.INSTANCE.setContent(new LoginScreen());
+                }
+
+                else if(historyToken.equalsIgnoreCase("tc")) {
+                    ContentContainer.INSTANCE.setContent(new TCScreen());
+                }
+
+                else if(historyToken.equalsIgnoreCase("profile")) {
+                    ContentContainer.INSTANCE.setContent(new ProfileScreen());
+                }
+
+                else if(historyToken.equalsIgnoreCase("details")) {
+                    ContentContainer.INSTANCE.setContent(new ContestDetailsScreen());
+                }
+                else if(historyToken.equalsIgnoreCase("forget-password")){
+                    ContentContainer.INSTANCE.setContent(new TriggerPasswordResetScreen());
+                }
+
+
+                else if(historyToken.substring(0, 10).equalsIgnoreCase("resetToken")) {
+                    ContentContainer.INSTANCE.setContent(new ResetPasswordScreen(historyToken.substring(11)));
+                }
+
+                else if(historyToken.substring(0, 12).equalsIgnoreCase("confirmToken")) {
+                    authenticationService.setConfirmationStatus(historyToken.substring(13), new AsyncCallback<Boolean>() {
+                        @Override
+                        public void onFailure(Throwable caught) {
+                            ContentContainer.INSTANCE.setContent(new MessageScreen("<h1>"+ messages.confirmationTokenError() +"</h1>"));
+                        }
+
+                        @Override
+                        public void onSuccess(Boolean result) {
+                            if(result) {
+                                ContentContainer.INSTANCE.setContent(new MessageScreen("<h1>"+ messages.confirmedAccount() +"</h1>"));
+                            }
+
+                            else {
+                                ContentContainer.INSTANCE.setContent(new MessageScreen("<h1>"+ messages.confirmationTokenError() +"</h1>"));
+                            }
+                        }
+                    });
+                }
+
+                else {
+                    ContentContainer.INSTANCE.setContent(new IndexScreen());
+                }
+            }
+        });
+
+        History.fireCurrentHistoryState();
         RootPanel.get("footer").add(new Footer());
-//
+
         if(LocaleInfo.getCurrentLocale().getLocaleName().equals("en")) {
             StyleInjector.inject("body.lp #page { background: #fff url(\"../images/masthead_microsite_1003x370.jpg\") 0 0 no-repeat; }");
             StyleInjector.inject("#sm-logo { background: transparent url(\"../images/redhathome_logo.png\") 0 30px no-repeat; }");
@@ -125,9 +125,6 @@ public class Entry implements EntryPoint {
             StyleInjector.inject("body.lp #page { background: #fff url(\"../images/masthead_microsite_1003x370_zh.jpg\") 0 0 no-repeat; }");
             StyleInjector.inject("#sm-logo { background: transparent url(\"../images/redhathome_logo_zh.png\") 0 30px no-repeat; }");
         }
-
-        ContentContainer.INSTANCE.setContent(new verifyMessageScreen(messages.verifyMailMessage("Terry", "terrycwk1994@gmail.com")));
-
 
     }
 }
